@@ -7,7 +7,7 @@ bot = Bot(token=config["token"])
 async def has_channel_permission(user: GuildUser, guild_id: str) -> bool:
     user.guild_id = guild_id
     for role in await user.fetch_roles():
-        if role.permissions <= (1 << 5):  # bitValue see https://developer.kaiheila.cn/doc/http/guild-role#%E6%9D%83%E9%99%90%E8%AF%B4%E6%98%8E
+        if role.permissions & 63 != 0:  # bitValue see https://developer.kaiheila.cn/doc/http/guild-role#%E6%9D%83%E9%99%90%E8%AF%B4%E6%98%8E
             return True
     return False
 
