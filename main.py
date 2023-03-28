@@ -56,7 +56,7 @@ async def webhook(request: web.Request):
     return web.Response(body="Success", status=200)
 
 async def main():
-    await asyncio.gather(asyncio.gather(web._run_app(app, host="127.0.0.1", port=config["post"]), bot.start()))
+    await asyncio.gather(web.run_app(app, port=config["post"]), bot.start())
 
 
 if __name__ == '__main__':
